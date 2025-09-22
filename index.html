@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monastery Tourism Platform - Explore Sacred Heritage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-mountain"></i>
+                <span>Monastery 360</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#map" class="nav-link">Map</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#archives" class="nav-link">Archives</a>
+                <a href="#audio" class="nav-link">Audio Guide</a>
+            </div>
+            <div class="language-selector">
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Sacred Heritage</h1>
+            <p>Explore ancient monasteries through immersive virtual tours, interactive maps, and digital archives</p>
+            <div class="hero-features">
+                <div class="feature-badge">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <span>360° Tours</span>
+                </div>
+                <div class="feature-badge">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Interactive Map</span>
+                </div>
+                <div class="feature-badge">
+                    <i class="fas fa-search"></i>
+                    <span>Digital Archives</span>
+                </div>
+                <div class="feature-badge">
+                    <i class="fas fa-headphones"></i>
+                    <span>Audio Guide</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monastery Overview Section -->
+    <section id="overview" class="overview-section">
+        <div class="container">
+            <h2>Featured Monasteries</h2>
+            <div class="monastery-grid" id="monasteryGrid">
+                <!-- Monastery cards will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section id="map" class="map-section">
+        <div class="container">
+            <h2>Interactive Map</h2>
+            <div class="map-controls">
+                <button class="map-btn active" data-layer="monasteries">Monasteries</button>
+                <button class="map-btn" data-layer="attractions">Attractions</button>
+                <button class="map-btn" data-layer="routes">Travel Routes</button>
+                <button class="map-btn" data-layer="transport">Transport</button>
+            </div>
+            <div class="map-container">
+                <div id="map" class="map"></div>
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <div class="legend-color monastery"></div>
+                        <span>Monasteries</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color attraction"></div>
+                        <span>Attractions</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color route"></div>
+                        <span>Travel Routes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Calendar Section -->
+    <section id="events" class="events-section">
+        <div class="container">
+            <h2>Cultural Events Calendar</h2>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prevYear" class="calendar-nav year-nav">
+                        <i class="fas fa-chevron-double-left"></i>
+                    </button>
+                    <button id="prevMonth" class="calendar-nav">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="calendar-title">
+                        <h3 id="currentMonth"></h3>
+                        <span id="currentYear" class="year-display"></span>
+                    </div>
+                    <button id="nextMonth" class="calendar-nav">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button id="nextYear" class="calendar-nav year-nav">
+                        <i class="fas fa-chevron-double-right"></i>
+                    </button>
+                </div>
+                <div class="calendar-filters">
+                    <select id="yearFilter" class="filter-select">
+                        <option value="all">All Years</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+                    <select id="statusFilter" class="filter-select">
+                        <option value="all">All Events</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="completed">Past Events</option>
+                    </select>
+                    <select id="monasteryFilter" class="filter-select">
+                        <option value="all">All Monasteries</option>
+                        <option value="1">Rumtek Monastery</option>
+                        <option value="2">Phodong Monastery</option>
+                        <option value="3">Pemayangtse Monastery</option>
+                        <option value="4">Kartok Monastery</option>
+                        <option value="5">Sinon Monastery</option>
+                        <option value="6">Do-drul Chorten</option>
+                        <option value="7">Ngadak Monastery</option>
+                        <option value="8">Doling Monastery</option>
+                        <option value="9">Gonjang Monastery</option>
+                        <option value="10">Serdup Monastery</option>
+                    </select>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar will be dynamically generated -->
+                </div>
+            </div>
+            <div class="events-list" id="eventsList">
+                <!-- Events will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Digital Archives Section -->
+    <section id="archives" class="archives-section">
+        <div class="container">
+            <h2>Digital Archives</h2>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="archiveSearch" placeholder="Search manuscripts, murals, and historical documents...">
+                    <button id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="search-filters">
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="manuscripts">Manuscripts</option>
+                        <option value="murals">Murals</option>
+                        <option value="documents">Documents</option>
+                        <option value="artifacts">Artifacts</option>
+                    </select>
+                    <select id="periodFilter">
+                        <option value="all">All Periods</option>
+                        <option value="medieval">Medieval</option>
+                        <option value="renaissance">Renaissance</option>
+                        <option value="baroque">Baroque</option>
+                        <option value="modern">Modern</option>
+                    </select>
+                </div>
+            </div>
+            <div class="archives-grid" id="archivesGrid">
+                <!-- Archive items will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Guide Section -->
+    <section id="audio" class="audio-section">
+        <div class="container">
+            <h2>Smart Audio Guide</h2>
+            <div class="audio-controls">
+                <div class="audio-player" id="audioPlayer">
+                    <div class="player-info">
+                        <h4 id="currentTrack">Select a location to start audio guide</h4>
+                        <p id="currentLocation"></p>
+                    </div>
+                    <div class="player-controls">
+                        <button id="playPauseBtn" class="control-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button id="downloadBtn" class="control-btn">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button id="offlineBtn" class="control-btn">
+                            <i class="fas fa-wifi"></i>
+                        </button>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                </div>
+                <div class="audio-locations" id="audioLocations">
+                    <!-- Audio guide locations will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Upload Section -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2>Contribute to Digital Collection</h2>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Upload Images</h3>
+                    <p>Share your monastery photos to help preserve cultural heritage</p>
+                    <input type="file" id="imageUpload" accept="image/*" multiple>
+                    <button class="upload-btn">Choose Files</button>
+                </div>
+            </div>
+            <div class="uploaded-images" id="uploadedImages">
+                <!-- Uploaded images will be displayed here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Monastery Details -->
+    <div id="monasteryModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Monastery details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Modal for Event Booking -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content booking-modal">
+            <div class="modal-header">
+                <h2>Book Cultural Event</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="event-booking-info">
+                    <div class="event-details-card">
+                        <h3 id="bookingEventTitle">Event Title</h3>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span id="bookingEventDate">Date</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span id="bookingEventTime">Time</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="bookingEventLocation">Location</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span id="bookingEventPrice">Price</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span id="bookingEventCapacity">Capacity</span>
+                            </div>
+                        </div>
+                        <p id="bookingEventDescription" class="event-description">Event description</p>
+                    </div>
+                </div>
+                
+                <form id="bookingForm" class="booking-form">
+                    <div class="form-section">
+                        <h4>Personal Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="attendeeName">Full Name *</label>
+                                <input type="text" id="attendeeName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="attendeeEmail">Email Address *</label>
+                                <input type="email" id="attendeeEmail" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="attendeePhone">Phone Number *</label>
+                                <input type="tel" id="attendeePhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="attendeeAge">Age</label>
+                                <input type="number" id="attendeeAge" min="1" max="120">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h4>Booking Details</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="attendeeCount">Number of Attendees *</label>
+                                <select id="attendeeCount" required>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="specialRequirements">Special Requirements</label>
+                                <select id="specialRequirements">
+                                    <option value="">None</option>
+                                    <option value="wheelchair">Wheelchair Access</option>
+                                    <option value="dietary">Dietary Restrictions</option>
+                                    <option value="language">Language Assistance</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="additionalNotes">Additional Notes</label>
+                            <textarea id="additionalNotes" rows="3" placeholder="Any special requests or additional information..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h4>Payment Information</h4>
+                        <div class="payment-info">
+                            <div class="total-cost">
+                                <span>Total Cost: </span>
+                                <span id="totalCost">₹0</span>
+                            </div>
+                            <div class="payment-methods">
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="online" checked>
+                                    <span>Online Payment</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="cash">
+                                    <span>Pay at Event</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelBooking">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="confirmBooking">
+                            <i class="fas fa-ticket-alt"></i>
+                            Confirm Booking
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Virtual Tour -->
+    <div id="tourModal" class="modal tour-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <h3 id="tourTitle"></h3>
+                <div class="tour-container">
+                    <div class="tour-viewer" id="tourViewer">
+                        <!-- 360° tour iframe will be loaded here -->
+                    </div>
+                    <div class="tour-controls">
+                        <button id="fullscreenBtn" class="control-btn">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                        <button id="languageBtn" class="control-btn">
+                            <i class="fas fa-language"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

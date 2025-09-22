@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monastery Details - Sikkim Heritage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-mountain"></i>
+                <span>Sikkim Heritage</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#map" class="nav-link">Map</a>
+                <a href="index.html#events" class="nav-link">Events</a>
+                <a href="index.html#archives" class="nav-link">Archives</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Monastery Details Section -->
+    <section class="monastery-details-section">
+        <div class="container">
+            <div class="monastery-header">
+                <div class="monastery-image-large">
+                    <img id="monasteryImage" src="" alt="Monastery Image">
+                    <div class="image-overlay">
+                        <button id="virtualTourBtn" class="btn btn-primary">
+                            <i class="fas fa-vr-cardboard"></i>
+                            Virtual Tour
+                        </button>
+                        <button id="videoTourBtn" class="btn btn-secondary" style="display: none;">
+                            <i class="fas fa-play-circle"></i>
+                            Video Tour
+                        </button>
+                    </div>
+                </div>
+                <div class="monastery-info">
+                    <h1 id="monasteryName">Monastery Name</h1>
+                    <p class="monastery-location" id="monasteryLocation">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Location
+                    </p>
+                    <p class="monastery-local-name" id="monasteryLocalName">Local Name</p>
+                    <div class="monastery-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Established: <span id="establishedYear">Year</span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-user"></i>
+                            <span>Founder: <span id="founder">Founder Name</span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map"></i>
+                            <span>District: <span id="district">District</span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-temple-buddhist"></i>
+                            <span>Sect: <span id="sect">Sect</span></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Learn More Button for All Monasteries -->
+                    <div id="learnMoreSection" style="display: none; margin-top: 1rem;">
+                        <a id="learnMoreLink" 
+                           class="btn btn-primary" 
+                           target="_blank" 
+                           style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-external-link-alt"></i>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="monastery-content">
+                <div class="content-grid">
+                    <div class="main-content">
+                        <div class="description-section">
+                            <h2>About This Monastery</h2>
+                            <p id="monasteryDescription">Description will be loaded here</p>
+                        </div>
+
+                        <div class="sect-section">
+                            <h2>Buddhist Sect Information</h2>
+                            <div class="sect-info">
+                                <h3 id="sectName">Sect Name</h3>
+                                <p id="sectDescription">Sect description will be loaded here</p>
+                            </div>
+                        </div>
+
+                        <div class="features-section">
+                            <h2>Available Features</h2>
+                            <div class="features-grid" id="featuresGrid">
+                                <!-- Features will be loaded here -->
+                            </div>
+                        </div>
+
+                        <div class="audio-guide-section">
+                            <h2>Audio Guide</h2>
+                            <div class="audio-guide-info">
+                                <h3 id="audioGuideTitle">Audio Guide Title</h3>
+                                <p class="audio-duration">Duration: <span id="audioDuration">Duration</span></p>
+                                <p class="audio-languages">Languages: <span id="audioLanguages">Languages</span></p>
+                                
+                                <!-- Audio Player -->
+                                <div class="audio-player">
+                                    <audio id="monasteryAudio" controls preload="metadata">
+                                        <source id="audioSource" src="" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    <div class="audio-controls">
+                                        <button class="btn btn-primary" id="playPauseAudioBtn">
+                                            <i class="fas fa-play"></i>
+                                            Play Audio Guide
+                                        </button>
+                                        <button class="btn btn-secondary" id="downloadAudioBtn">
+                                            <i class="fas fa-download"></i>
+                                            Download
+                                        </button>
+                                        <div class="audio-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress" id="audioProgress"></div>
+                                            </div>
+                                            <span class="time-display">
+                                                <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="audio-tracks">
+                                    <h4>Audio Tracks:</h4>
+                                    <ul id="audioTracks">
+                                        <!-- Audio tracks will be loaded here -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar">
+                        <div class="map-widget">
+                            <h3>Location Map</h3>
+                            <div id="monasteryMap" class="mini-map">
+                                
+                            </div>
+                            <p class="map-address" id="mapAddress">Address will be loaded here</p>
+                        </div>
+
+                        <div class="events-widget">
+                            <h3>Upcoming Events</h3>
+                            <div id="monasteryEvents">
+                                <!-- Events will be loaded here -->
+                            </div>
+                        </div>
+
+                        <div class="hotel-booking-widget">
+                            <h3>Nearby Hotels</h3>
+                            <div class="hotel-booking-card" id="hotelBookingCard">
+                                <!-- Hotel booking card will be loaded here -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 360 Virtual Tour Modal -->
+    <div id="virtualTourModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>360° Virtual Tour</h2>
+                <span class="close" id="closeVirtualTour">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe id="virtualTourIframe" 
+                        src="https://www.google.com/maps/embed?pb=!4v1758363100914!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ0VndFRIUmc.!2m2!1d27.28862027053181!2d88.56148053028257!3f96.13!4f8.5!5f0.4000000000000002" 
+                        width="100%" 
+                        height="500" 
+                        style="border:0; border-radius: 10px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Tour Modal -->
+    <div id="videoTourModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="videoTourTitle">Video Tour</h2>
+                <span class="close" id="closeVideoTour">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe id="videoTourIframe" 
+                        src="" 
+                        width="100%" 
+                        height="500" 
+                        style="border:0; border-radius: 10px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <script>
+        // Load monastery details from URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const monasteryId = urlParams.get('id');
+            
+            if (monasteryId) {
+                loadMonasteryDetails(parseInt(monasteryId));
+            } else {
+                // Redirect to home if no ID provided
+                window.location.href = 'index.html';
+            }
+        });
+
+        function loadMonasteryDetails(monasteryId) {
+            const monastery = monasteriesData.find(m => m.id === monasteryId);
+            if (!monastery) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Update page title
+            document.title = `${monastery.name} - Sikkim Heritage`;
+
+            // Update monastery information
+            document.getElementById('monasteryName').textContent = monastery.name;
+            document.getElementById('monasteryLocation').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${monastery.location}`;
+            document.getElementById('monasteryLocalName').textContent = monastery.localName;
+            document.getElementById('establishedYear').textContent = monastery.establishedYear;
+            document.getElementById('founder').textContent = monastery.founder;
+            document.getElementById('district').textContent = monastery.district;
+            document.getElementById('sect').textContent = monastery.sect;
+            document.getElementById('monasteryDescription').textContent = monastery.description;
+            document.getElementById('monasteryImage').src = monastery.image;
+            document.getElementById('monasteryImage').alt = monastery.name;
+            document.getElementById('mapAddress').textContent = monastery.address;
+
+            // Update sect information
+            document.getElementById('sectName').textContent = monastery.sect;
+            document.getElementById('sectDescription').textContent = monastery.sectDescription;
+
+            // Update features
+            const featuresGrid = document.getElementById('featuresGrid');
+            featuresGrid.innerHTML = monastery.features.map(feature => `
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>${feature}</span>
+                </div>
+            `).join('');
+
+            // Show Learn More button for all monasteries
+            const learnMoreSection = document.getElementById('learnMoreSection');
+            const learnMoreLink = document.getElementById('learnMoreLink');
+            if (monastery.mediaUrl) {
+                learnMoreLink.href = monastery.mediaUrl;
+                learnMoreLink.innerHTML = `<i class="fas fa-external-link-alt"></i> Learn More About ${monastery.name}`;
+                learnMoreSection.style.display = 'block';
+            } else {
+                learnMoreSection.style.display = 'none';
+            }
+
+            // Show Video Tour button for all monasteries
+            const videoTourBtn = document.getElementById('videoTourBtn');
+            if (monastery.name === 'Rumtek Monastery' || monastery.name === 'Pemayangtse Monastery' || monastery.name === 'Kartok Monastery' || monastery.name === 'Gonjang Monastery' || monastery.name === 'Sinon Monastery' || monastery.name === 'Do-drul Chorten' || monastery.name === 'Ngadak Thupten Shedup Dhargey Choeling Monastery' || monastery.name === 'Serdup Choling Monastery' || monastery.name === 'Doling Monastery' || monastery.name === 'Phodong Monastery') {
+                videoTourBtn.style.display = 'inline-flex';
+            } else {
+                videoTourBtn.style.display = 'none';
+            }
+
+            // Update audio guide
+            document.getElementById('audioGuideTitle').textContent = monastery.audioGuide.title;
+            document.getElementById('audioDuration').textContent = monastery.audioGuide.duration;
+            document.getElementById('audioLanguages').textContent = monastery.audioGuide.languages.join(', ');
+            
+            // Set audio source
+            const audioElement = document.getElementById('monasteryAudio');
+            const audioSource = document.getElementById('audioSource');
+            if (monastery.audioGuide.audioFile) {
+                audioSource.src = monastery.audioGuide.audioFile;
+                audioElement.load();
+            }
+            
+            const audioTracks = document.getElementById('audioTracks');
+            audioTracks.innerHTML = monastery.audioGuide.tracks.map(track => `
+                <li>${track.name} - ${track.duration}</li>
+            `).join('');
+
+
+            // Load monastery events
+            loadMonasteryEvents(monasteryId);
+
+            // Load mini map
+            loadMiniMap(monastery.coordinates, monastery.name);
+
+            // Load hotel booking card
+            loadHotelBookingCard(monasteryId);
+        }
+
+        function loadMonasteryEvents(monasteryId) {
+            const monasteryEvents = eventsData.filter(event => event.monasteryId === monasteryId);
+            const eventsContainer = document.getElementById('monasteryEvents');
+            
+            if (monasteryEvents.length === 0) {
+                eventsContainer.innerHTML = '<p>No upcoming events for this monastery.</p>';
+                return;
+            }
+
+            eventsContainer.innerHTML = monasteryEvents.slice(0, 3).map(event => `
+                <div class="event-item">
+                    <h4>${event.title}</h4>
+                    <p class="event-date">${event.date.toLocaleDateString()}</p>
+                    <p class="event-duration">${event.duration}</p>
+                </div>
+            `).join('');
+        }
+
+        function loadHotelBookingCard(monasteryId) {
+            const hotelData = hotelBookingData[monasteryId];
+            if (!hotelData) return;
+
+            const bookingCard = document.getElementById('hotelBookingCard');
+            bookingCard.innerHTML = `
+                <div class="hotel-booking-content">
+                    <div class="hotel-booking-header">
+                        <h4>Find Hotels Near ${hotelData.name}</h4>
+                        <div class="hotel-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${hotelData.location}
+                        </div>
+                    </div>
+                    
+                    <div class="hotel-booking-details">
+                        <div class="hotel-info">
+                            <div class="hotel-distance">
+                                <i class="fas fa-route"></i>
+                                <span>Distance: ${hotelData.distance}</span>
+                            </div>
+                            <div class="hotel-price">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>Price: ${hotelData.priceRange}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="nearby-hotels">
+                            <h5>Popular Hotels:</h5>
+                            <ul>
+                                ${hotelData.nearbyHotels.map(hotel => `<li>${hotel}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="hotel-booking-actions">
+                        <a href="${hotelData.makeMyTripUrl}" 
+                           target="_blank" 
+                           class="btn btn-primary hotel-booking-btn">
+                            <i class="fas fa-bed"></i>
+                            Book Hotels on MakeMyTrip
+                        </a>
+                        <button class="btn btn-secondary hotel-info-btn" onclick="showHotelDetails(${monasteryId})">
+                            <i class="fas fa-info-circle"></i>
+                            More Info
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showHotelDetails(monasteryId) {
+            const hotelData = hotelBookingData[monasteryId];
+            if (!hotelData) return;
+
+            const modal = document.createElement('div');
+            modal.className = 'modal hotel-details-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Hotel Information - ${hotelData.name}</h2>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="hotel-details-content">
+                            <div class="hotel-location-info">
+                                <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+                                <p>${hotelData.location}</p>
+                                <p>Distance from monastery: ${hotelData.distance}</p>
+                            </div>
+                            
+                            <div class="hotel-pricing-info">
+                                <h3><i class="fas fa-rupee-sign"></i> Pricing</h3>
+                                <p>Price range: ${hotelData.priceRange}</p>
+                                <p>Prices may vary based on season and availability</p>
+                            </div>
+                            
+                            <div class="hotel-recommendations">
+                                <h3><i class="fas fa-star"></i> Recommended Hotels</h3>
+                                <ul>
+                                    ${hotelData.nearbyHotels.map(hotel => `<li>${hotel}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div class="hotel-booking-cta">
+                                <a href="${hotelData.makeMyTripUrl}" 
+                                   target="_blank" 
+                                   class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    View Hotels on MakeMyTrip
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.style.display = 'block';
+            
+            // Close modal functionality
+            modal.querySelector('.close').addEventListener('click', () => {
+                modal.remove();
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        function loadMiniMap(coordinates, name) {
+            const mapContainer = document.getElementById('monasteryMap');
+            
+            // Check for specific monasteries with Google Maps embeds
+            if (name === "Rumtek Monastery") {
+                mapContainer.innerHTML = `
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3545.846491578636!2d88.55978817470043!3d27.286684543920806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1srumtek%20monastery!5e0!3m2!1sen!2sin!4v1758361135804!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            } else if (name === "Phodong Monastery") {
+                mapContainer.innerHTML = `
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3541.8093643996904!2d88.58124557470514!3d27.412876238419138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6bba53187e157%3A0xefa19c90b60b6591!2sPhodong%20Monastery!5e0!3m2!1sen!2sin!4v1758361937209!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            } else if (name === "Kartok Monastery") {
+                mapContainer.innerHTML = `
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113465.23651829547!2d88.44036257167737!3d27.288496622624177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a7b8024d1677%3A0xd2b0be6addf3222e!2sKartok%20Monastery!5e0!3m2!1sen!2sin!4v1758362297848!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            } else if (name === "Pemayangtse Monastery") {
+                mapContainer.innerHTML = `
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14181.016034112046!2d88.23313118147549!3d27.305237955809506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e685d35d570dcf%3A0xbba9d8f51db0ca38!2sPemayangtse%20Monastery!5e0!3m2!1sen!2sin!4v1758362349103!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            } else if (name === "Sinon Monastery") {
+                mapContainer.innerHTML = `
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3544.0667994247938!2d88.28745517470247!3d27.34238004149534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6857a2ad08397%3A0x639c7b7b7b2ddebf!2sSinen%20Ngadak%20Monastery!5e0!3m2!1sen!2sin!4v1758362426696!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            } else if (name === "Do-drul Chorten") {
+                mapContainer.innerHTML = `
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3545.010938666992!2d88.6022616747014!3d27.31284624278209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a50f6899fd1b%3A0x66b81546cd848371!2sDo%20Drul%20Chorten!5e0!3m2!1sen!2sin!4v1758362515091!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            } else if (name === "Ngadak Monastery") {
+                mapContainer.innerHTML = `
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3549.460957101747!2d88.36805287469622!3d27.173245448847243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e69d85089f9f27%3A0x760768dc782e46c3!2sNgadak%20Thupten%20Shedup%20Dhargey%20Choeling%2C%20Monastery!5e0!3m2!1sen!2sin!4v1758363731590!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            } else if (name === "Doling Monastery") {
+                mapContainer.innerHTML = `
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3545.8053982491774!2d88.34233677470048!3d27.287971743864826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e69b1671fb6c5d%3A0xa855ddd6edaf2cb9!2sDoling%20monastery!5e0!3m2!1sen!2sin!4v1758362650972!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            } else if (name === "Gonjang Monastery") {
+                mapContainer.innerHTML = `
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.213618960975!2d88.61062577470348!3d27.36904324033276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6bac7a21a9def%3A0x289622b68bc79c2c!2sGonjang%20Monastery!5e0!3m2!1sen!2sin!4v1758362742691!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            } else if (name === "Serdup Monastery") {
+                mapContainer.innerHTML = `
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3549.838685010848!2d88.3542472!3d27.1613653!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e42787b1e929fd%3A0x6d6c36f025dc7dc!2sSerdup%20Choling%20Monastery!5e0!3m2!1sen!2sin!4v1758363462102!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                `;
+            } else {
+                // For other monasteries, show a placeholder with coordinates
+                mapContainer.innerHTML = `
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>${name}</p>
+                        <p>Coordinates: ${coordinates[0]}, ${coordinates[1]}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function loadVirtualTour(monasteryName) {
+            const iframe = document.getElementById('virtualTourIframe');
+            let virtualTourUrl = '';
+            
+            // Load specific 360-degree views for each monastery
+            switch(monasteryName) {
+                case "Phodong Monastery":
+                    virtualTourUrl = "https://www.google.com/maps/embed?pb=!4v1758364003314!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJREUtSTJBbXdF!2m2!1d27.41250043052966!2d88.58361050014649!3f120!4f0!5f0.7820865974627469";
+                    break;
+                case "Kartok Monastery":
+                    virtualTourUrl = "https://www.google.com/maps/embed?pb=!4v1758364269864!6m8!1m7!1soai7Ta_mV-kIkOmeBVeusw!2m2!1d27.24064035522526!2d88.58755568983742!3f71.61437!4f0!5f0.7820865974627469";
+                    break;
+                case "Pemayangtse Monastery":
+                    virtualTourUrl = "https://www.google.com/maps/embed?pb=!4v1758364189869!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJREVoSlhucEFF!2m2!1d27.30518919282202!2d88.25156580066201!3f29.149603!4f0!5f0.7820865974627469";
+                    break;
+                case "Do-drul Chorten":
+                    virtualTourUrl = "https://www.google.com/maps/embed?pb=!4v1758364503285!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ0V2LXJFYWc.!2m2!1d27.31568276523647!2d88.60481141338492!3f138.35!4f21.430000000000007!5f0.4000000000000002";
+                    break;
+                case "Gonjang Monastery":
+                    virtualTourUrl = "https://www.google.com/maps/embed?pb=!4v1758364567566!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ1VwcWV5aHdF!2m2!1d27.36907092833192!2d88.61323361249131!3f14.79!4f20.72!5f0.4000000000000002";
+                    break;
+                case "Serdup Monastery":
+                    virtualTourUrl = "https://www.google.com/maps/embed?pb=!4v1758365126321!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQzRxN0xOUmc.!2m2!1d27.16136529804433!2d88.35424723388128!3f73.39542!4f0!5f0.7820865974627469";
+                    break;
+                case "Rumtek Monastery":
+                    virtualTourUrl = "https://www.google.com/maps/embed?pb=!4v1758363100914!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ0VndFRIUmc.!2m2!1d27.28862027053181!2d88.56148053028257!3f96.13!4f8.5!5f0.4000000000000002";
+                    break;
+                default:
+                    // Default 360 view for other monasteries
+                    virtualTourUrl = "https://www.google.com/maps/embed?pb=!4v1758363100914!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ0VndFRIUmc.!2m2!1d27.28862027053181!2d88.56148053028257!3f96.13!4f8.5!5f0.4000000000000002";
+                    break;
+            }
+            
+            iframe.src = virtualTourUrl;
+        }
+
+        function loadVideoTour(monasteryName) {
+            const iframe = document.getElementById('videoTourIframe');
+            const title = document.getElementById('videoTourTitle');
+            let videoUrl = '';
+            
+            // Load specific video tours for each monastery
+            switch(monasteryName) {
+                case "Rumtek Monastery":
+                    videoUrl = "https://www.youtube.com/embed/dDgcn5p5Xvc?si=Q_70Nud9-H8343R6";
+                    title.textContent = "Video Tour - Rumtek Monastery";
+                    break;
+                case "Pemayangtse Monastery":
+                    videoUrl = "https://www.youtube.com/embed/GOKMp1BdnNo?si=yFYuF6--lfWadD2T";
+                    title.textContent = "Video Tour - Pemayangtse Monastery";
+                    break;
+                case "Kartok Monastery":
+                    videoUrl = "https://www.youtube.com/embed/WmyZrF8SHGY?si=PKtKoNU9sJyzBwt_";
+                    title.textContent = "Video Tour - Kartok Monastery";
+                    break;
+                case "Gonjang Monastery":
+                    videoUrl = "https://www.youtube.com/embed/iz_3iI58Edw?si=35lnONv1e3eWL57s";
+                    title.textContent = "Video Tour - Gonjang Monastery";
+                    break;
+                case "Sinon Monastery":
+                    videoUrl = "https://www.youtube.com/embed/eOHKf02Am_M?si=0ZLGKmXPTtHDYeCZ";
+                    title.textContent = "Video Tour - Sinon Monastery";
+                    break;
+                case "Do-drul Chorten":
+                    videoUrl = "https://www.youtube.com/embed/91Mp6_N00Lk?si=wfZoIxS3NpUeHx8o";
+                    title.textContent = "Video Tour - Do-drul Chorten";
+                    break;
+                case "Ngadak Thupten Shedup Dhargey Choeling Monastery":
+                    videoUrl = "https://www.youtube.com/embed/xzStQmVqqtY?si=aY3AocU3jYzjW27i";
+                    title.textContent = "Video Tour - Ngadak Monastery";
+                    break;
+                case "Serdup Choling Monastery":
+                    videoUrl = "https://www.youtube.com/embed/V2wYE7pRX2E?si=tIoj_bYtRKz10Vhr";
+                    title.textContent = "Video Tour - Serdup Choling Monastery";
+                    break;
+                case "Doling Monastery":
+                    videoUrl = "https://www.youtube.com/embed/GOKMp1BdnNo?si=yFYuF6--lfWadD2T";
+                    title.textContent = "Video Tour - Doling Monastery";
+                    break;
+                case "Phodong Monastery":
+                    videoUrl = "https://www.youtube.com/embed/zj5S2mtSPGE?si=oJqTawRO2yYX_jjf";
+                    title.textContent = "Video Tour - Phodong Monastery";
+                    break;
+                default:
+                    videoUrl = "https://www.youtube.com/embed/dDgcn5p5Xvc?si=Q_70Nud9-H8343R6";
+                    title.textContent = "Video Tour";
+                    break;
+            }
+            
+            iframe.src = videoUrl;
+        }
+
+        // Event listeners
+        document.getElementById('virtualTourBtn').addEventListener('click', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const monasteryId = urlParams.get('id');
+            const monastery = monasteriesData.find(m => m.id === parseInt(monasteryId));
+            
+            if (monastery) {
+                loadVirtualTour(monastery.name);
+            }
+            
+            const modal = document.getElementById('virtualTourModal');
+            modal.style.display = 'block';
+        });
+
+        // Close modal when clicking the X
+        document.getElementById('closeVirtualTour').addEventListener('click', function() {
+            const modal = document.getElementById('virtualTourModal');
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('virtualTourModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Video Tour button event listener
+        document.getElementById('videoTourBtn').addEventListener('click', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const monasteryId = urlParams.get('id');
+            const monastery = monasteriesData.find(m => m.id === parseInt(monasteryId));
+            
+            if (monastery) {
+                loadVideoTour(monastery.name);
+            }
+            
+            const modal = document.getElementById('videoTourModal');
+            modal.style.display = 'block';
+        });
+
+        // Close Video Tour modal when clicking the X
+        document.getElementById('closeVideoTour').addEventListener('click', function() {
+            const modal = document.getElementById('videoTourModal');
+            modal.style.display = 'none';
+        });
+
+        // Close Video Tour modal when clicking outside of it
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('videoTourModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Audio player functionality
+        const audioElement = document.getElementById('monasteryAudio');
+        const playPauseBtn = document.getElementById('playPauseAudioBtn');
+        const downloadBtn = document.getElementById('downloadAudioBtn');
+        const progressBar = document.getElementById('audioProgress');
+        const currentTimeSpan = document.getElementById('currentTime');
+        const totalTimeSpan = document.getElementById('totalTime');
+
+        // Play/Pause button functionality
+        playPauseBtn.addEventListener('click', function() {
+            if (audioElement.paused) {
+                audioElement.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Audio Guide';
+                playPauseBtn.classList.remove('btn-primary');
+                playPauseBtn.classList.add('btn-secondary');
+            } else {
+                audioElement.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i> Play Audio Guide';
+                playPauseBtn.classList.remove('btn-secondary');
+                playPauseBtn.classList.add('btn-primary');
+            }
+        });
+
+        // Download button functionality
+        downloadBtn.addEventListener('click', function() {
+            const audioSource = document.getElementById('audioSource');
+            if (audioSource.src) {
+                const link = document.createElement('a');
+                link.href = audioSource.src;
+                link.download = audioSource.src.split('/').pop();
+                link.click();
+            } else {
+                alert('No audio file available for download.');
+            }
+        });
+
+        // Audio progress tracking
+        audioElement.addEventListener('timeupdate', function() {
+            if (audioElement.duration) {
+                const progress = (audioElement.currentTime / audioElement.duration) * 100;
+                progressBar.style.width = progress + '%';
+                
+                // Update time display
+                currentTimeSpan.textContent = formatTime(audioElement.currentTime);
+                totalTimeSpan.textContent = formatTime(audioElement.duration);
+            }
+        });
+
+        // Audio ended event
+        audioElement.addEventListener('ended', function() {
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i> Play Audio Guide';
+            playPauseBtn.classList.remove('btn-secondary');
+            playPauseBtn.classList.add('btn-primary');
+            progressBar.style.width = '0%';
+            currentTimeSpan.textContent = '0:00';
+        });
+
+        // Audio loaded metadata
+        audioElement.addEventListener('loadedmetadata', function() {
+            totalTimeSpan.textContent = formatTime(audioElement.duration);
+        });
+
+        // Progress bar click to seek
+        document.querySelector('.progress-bar').addEventListener('click', function(e) {
+            if (audioElement.duration) {
+                const rect = this.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const clickTime = (clickX / width) * audioElement.duration;
+                audioElement.currentTime = clickTime;
+            }
+        });
+
+        // Helper function to format time
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
